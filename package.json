@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/Edilberto-Vazquez/weather-data-inaoe#readme",
   "dependencies": {
+    "chart.js": "^3.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },

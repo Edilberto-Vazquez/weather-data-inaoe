@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import "../web_components/date-chart";
 
 const App = () => {
-  return <div>Hello, World</div>;
+  return (
+    <div>
+      <date-chart></date-chart>
+    </div>
+  );
 };
 
 export default App;
