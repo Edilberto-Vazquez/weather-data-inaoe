@@ -1,5 +1,4 @@
 import Chart from "chart.js/auto";
-import getData from "../utils/getData";
 
 class DateChart extends HTMLElement {
   constructor() {
@@ -16,10 +15,9 @@ class DateChart extends HTMLElement {
     return template;
   }
 
-  async render() {
+  render() {
     this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
     const ctx = this.shadowRoot.getElementById("chart");
-    const data = await getData();
     const myChart = new Chart(ctx, {
       type: "line",
       data: {
@@ -28,7 +26,7 @@ class DateChart extends HTMLElement {
             label: "Weather Data",
             backgroundColor: "rgb(0, 0, 0)",
             borderColor: "rgb(0, 0, 0)",
-            data: data.data,
+            data: JSON.parse(this.data),
           },
         ],
       },
