@@ -105,7 +105,7 @@ class DateChart extends HTMLElement {
       :host {
         width: 100%;
         min-height: 700px;
-        max-height: 900px;
+        max-height: 800px;
         display: grid;
         grid-template-rows: 50px calc(100% - 50px - 10px);
         gap: 10px;
