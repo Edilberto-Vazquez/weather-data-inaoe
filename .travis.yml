@@ -1,20 +1,21 @@
 language: node_js
 cache:
   directories:
-    - ~/.npm
+    - node_modules
 node_js:
   - "16"
 git:
   depth: 3
 script:
-  - yarn build
+  - npm run build || true
+  - npm run start
 deploy:
   provider: pages
   edge: true
   skip_cleanup: true
   keep_histoyry: true
   github-token: $GITHUB_TOKEN
-  local_dir: dist/
+  local_dir: dist
   target_branch: gh-pages
   commit_message: "Deplot Release"
   on:
