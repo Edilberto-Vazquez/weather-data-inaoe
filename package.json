@@ -26,7 +26,7 @@
   "bugs": {
     "url": "https://github.com/Edilberto-Vazquez/weather-data-inaoe/issues"
   },
-  "homepage": "https://github.com/Edilberto-Vazquez/weather-data-inaoe#readme",
+  "homepage": "https://edilberto-vazquez.github.io/weather-data-inaoe",
   "dependencies": {
     "chart.js": "^3.6.0",
     "react": "^17.0.2",
