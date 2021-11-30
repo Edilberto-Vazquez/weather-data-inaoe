@@ -1,10 +1,35 @@
-import React, { useState, useEffect, Suspense } from "react";
-import useGetdata from "../hooks/useGetData";
+import React, { useRef, useEffect } from "react";
+import getData from "../utils/getData";
+import newDataSets from "../utils/newDataset";
 import "../web_components/date-chart";
+import "../styles/main.css";
 
 const App = () => {
-  const { data, rows } = useGetdata();
-  return <div>{data.length && <date-chart data={JSON.stringify(data)} />}</div>;
+  const dateChart = useRef(null);
+
+  const handleSubmit = async (e, chart) => {
+    e.preventDefault();
+    chart.data.datasets = [];
+    const fields = dateChart.current.fields;
+    const dates = dateChart.current.dates;
+    if (fields.length) {
+      const { data } = await getData(fields, dates);
+      chart.data.datasets = newDataSets(data, fields);
+    }
+    chart.update();
+  };
+
+  useEffect(() => {
+    if (dateChart.current) {
+      dateChart.current.handleSubmit = handleSubmit;
+    }
+  }, [dateChart]);
+
+  return (
+    <div className="main">
+      <date-chart ref={dateChart} />
+    </div>
+  );
 };
 
 export default App;

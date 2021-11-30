@@ -1,17 +1,24 @@
-const API = "https://weather-data-inaoe.herokuapp.com/api/v1/";
+// const API = "https://weather-data-inaoe.herokuapp.com/api/v1/";
+const API =
+  "https://weather-data-inaoe.herokuapp.com/api/v1/select-records/by-date?datepart=month&table=weather_clouds";
 
-const testAPI =
-  "https://weather-data-inaoe.herokuapp.com/api/v1/select-records/by-date?datepart=day&fromdate=2019-01-01T00%3A00%3A00&todate=2019-02-28T23%3A50%3A00&table=weather_clouds&fields=dew";
-
-const getData = async () => {
-  const url = testAPI;
-  try {
-    const res = await fetch(url);
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.log("Fetch Error: ", error);
+const getQuery = (fields, dates) => {
+  let query = "";
+  for (const field of fields) {
+    query += `&fields=${field}`;
   }
+  const fromdate = `&fromdate=${dates.fromdate}T00:00:00`;
+  const todate = `&todate=${dates.todate}T00:00:00`;
+  return `${API}${fromdate}${todate}${query}`;
+};
+
+const getData = async (fields, dates) => {
+  try {
+    const res = await fetch(getQuery(fields, dates));
+    const data = await res.json();
+    console.log(data);
+    return data;
+  } catch (error) {}
 };
 
 export default getData;
