@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import getData from "../utils/getData";
 import newDataSets from "../utils/newDataset";
 import "../web_components/date-chart";
-import "../styles/main.css";
+import "./styles/main.css";
 
 const App = () => {
   const dateChart = useRef(null);
