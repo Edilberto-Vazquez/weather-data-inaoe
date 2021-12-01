@@ -1,18 +1,16 @@
 language: node_js
+node_js:
+  - "16"
 cache:
   directories:
     - node_modules
-node_js:
-  - "stable"
 script:
-  - npm run build || true
+  - npm run build
 deploy:
   provider: pages
-  edge: true
   skip_cleanup: true
-  keep_history: true
   github_token: $GITHUB_TOKEN
   local_dir: dist
-  commit_message: "Deplot Release"
+  commit_message: "Deploy Release"
   on:
     branch: main
