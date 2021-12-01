@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "16"
+  - "stable"
 cache:
   directories:
     - node_modules
@@ -9,7 +9,7 @@ script:
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN
+  github_token: $github_token
   local_dir: dist
   commit_message: "Deploy Release"
   on:
